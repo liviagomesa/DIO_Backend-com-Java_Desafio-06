@@ -1,32 +1,25 @@
 package br.com.dio.desafio.dominio;
 
-public class Curso extends Conteudo{
+public class Curso extends Conteudo {
 
+    // atributos
     private int cargaHoraria;
 
-    @Override
-    public double calcularXp() {
-        return XP_PADRAO * cargaHoraria;
+    // construtor
+    public Curso(String titulo, String descricao, int cargaHoraria) {
+        super(titulo, descricao);
+        this.cargaHoraria = cargaHoraria;
+        calcularXp();
     }
 
-    public Curso() {
-    }
-
-
+    // getters (getters de título, descrição e xp já estão na classe Conteudo)
     public int getCargaHoraria() {
         return cargaHoraria;
     }
 
-    public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
-    }
-
+    // método sobrescrito da classe Conteudo
     @Override
-    public String toString() {
-        return "Curso{" +
-                "titulo='" + getTitulo() + '\'' +
-                ", descricao='" + getDescricao() + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
-                '}';
+    public void calcularXp() {
+        this.xp = XP_PADRAO * cargaHoraria;
     }
 }

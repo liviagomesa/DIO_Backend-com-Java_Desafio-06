@@ -7,56 +7,55 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
+        // visão do criador de conteúdo para a plataforma
+        // criar bootcamp
+        Bootcamp bootcamp = new Bootcamp("Santander 2024 - Backend com Java",
+                "Aprenda desde os primeiros passos com Java partindo da sintaxe básica até a implementação de uma API utilizando Spring para se tornar um profissional atrativo no mercado.");
+        // criar e adicionar conteúdos ao bootcamp
+        Curso introducao = new Curso("Introdução à Plataforma Java", "Introdução à Plataforma Java", 8);
+        Mentoria aulaInaugural = new Mentoria("Aula Inaugural do Bootcamp",
+                "Uma aula inaugural para todos se conhecerem!", LocalDate.now());
+        Curso git = new Curso("Versionamento de Código com Git e GitHub",
+                "O Git é um conceito essencial no mercado de trabalho atualmente, por isso sempre reforçamos sua importância em nossa metodologia educacional.",
+                20);
+        Mentoria importanciaLogica = new Mentoria("A importância da lógica",
+                "Entenda por que você deve se preocupar com a lógica de programação.", LocalDate.of(2023, 12, 5));
+        Mentoria tempo = new Mentoria("Gerenciamento de tempo", "Uma dica muito importante para ter sucesso na área",
+                LocalDate.of(2024, 06, 01));
+        Curso poo = new Curso("Programação Orientada a Objetos com Java",
+                "Entenda os princípios da POO aplicados ao contexto do Java", 30);
+        Curso dependencias = new Curso("Testes e Gerenciamento de Dependências em Projetos Java",
+                "Aprenda tudo sobre testes e gerenciamento de dependências", 50);
+        bootcamp.adicionarConteudo(introducao);
+        bootcamp.adicionarConteudo(git);
+        bootcamp.adicionarConteudo(aulaInaugural);
+        bootcamp.adicionarConteudo(importanciaLogica);
+        bootcamp.adicionarConteudo(tempo);
+        bootcamp.adicionarConteudo(poo);
+        bootcamp.adicionarConteudo(dependencias);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
-
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
-
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
-
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
-
-        Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
+        // visão do aluno
+        // criar e inscrever aluno no bootcamp
+        Dev devCamila = new Dev("Camila");
         devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
+        // visualizar ementa do bootcamp
+        bootcamp.imprimirConteudo();
+        // progredir (imprimir mensagem de parabéns, informando o conteúdo finalizado e
+        // a quantidade de xp obtida)
         devCamila.progredir();
         devCamila.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+        // visualizar progresso (avanço de cada conteúdo e avanço geral)
+        devCamila.imprimirProgresso(bootcamp);
+        // visualizar prazo para finalizar e quantas horas por dia preciso estudar
+        devCamila.imprimirPlanejamento(bootcamp);
+        // visualizar xp
+        devCamila.imprimirXp();
 
-        System.out.println("-------");
-
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
+        Dev devJoao = new Dev("Joao");
         devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         devJoao.progredir();
         devJoao.progredir();
         devJoao.progredir();
-        System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
 
     }
 
